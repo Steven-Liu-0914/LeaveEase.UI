@@ -1,0 +1,24 @@
+<div class="p-6">
+    <h2 class="text-xl font-bold mb-4">Leave Calendar</h2>
+    <div class="scale-[0.85] origin-top-left">
+        <div class="w-full flex justify-between items-center pb-7">
+            <!-- Left (Previous) -->
+            <div class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
+                mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="closeOpenMonthViewDay()">
+                Previous
+            </div>
+
+            <!-- Right (Next) -->
+            <div class="px-7 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer" mwlCalendarNextView
+                [view]="view" [(viewDate)]="viewDate" (viewDateChange)="closeOpenMonthViewDay()">
+                Next
+            </div>
+        </div>
+        <mwl-calendar-month-view [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+            [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+            (eventClicked)="handleEvent('Clicked', $event.event)">
+        </mwl-calendar-month-view>
+    </div>
+
+</div>

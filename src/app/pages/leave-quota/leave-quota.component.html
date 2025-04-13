@@ -1,0 +1,43 @@
+<div class="p-4 w-4/5">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Manage Staff Leave Quotas</h2>
+
+    <div class="bg-white shadow rounded-lg p-4 overflow-x-auto">
+        <table class="min-w-full table-auto text-sm text-left border-collapse">
+            <thead class="border-b">
+                <tr>
+                    <th class="px-4 py-2 font-bold text-gray-700">Employee No.</th>
+                    <th class="px-4 py-2 font-bold text-gray-700">Name</th>
+                    <th class="px-4 py-2 font-bold text-gray-700">Children</th>
+                    <th class="px-4 py-2 font-bold text-gray-700">Annual</th>
+                    <th class="px-4 py-2 font-bold text-gray-700">Sick</th>
+                    <th class="px-4 py-2 font-bold text-gray-700">Emergency</th>
+                    <th class="px-4 py-2 font-bold text-gray-700 text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (staff of leaveQuota(); track staff.staffId) {
+                <tr class="border-b">
+                    <td class="px-4 py-2">{{ staff.staffNumber }}</td>
+                    <td class="px-4 py-2">{{ staff.staffName }}</td>
+
+                    @for (type of leaveTypes; track type) {
+                    <td class="px-2 py-1">
+                        <input matInput type="number" class="w-20 p-1 border border-gray-300 rounded-md"
+                            [value]="getQuotaValue(staff, type)"
+                            (input)="editQuota(staff.staffId, type, $any($event.target).valueAsNumber)" />
+                    </td>
+                    }
+
+
+                    <td class="px-2 py-1 text-center">
+                        <button mat-stroked-button class="px-5 py-2 text-white rounded-md bg-blue-700 transition"
+                            (click)="saveQuota(staff.staffId)">
+                            Update
+                        </button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

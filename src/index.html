@@ -1,13 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>LeaveEaseUI</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaveEase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#93C5FD'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <app-root></app-root>
+<body class="bg-blue-50">
+    <app-root></app-root>  <!-- Make sure Angular renders inside this -->
 </body>
 </html>

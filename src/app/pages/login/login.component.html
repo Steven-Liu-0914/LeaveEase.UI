@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div class="login-container flex justify-center items-center min-h-screen bg-blue-50">
+    <div class="login-box p-6 bg-white rounded-lg shadow-lg w-96">
+      <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Leave Ease</h2>
+
+      <!-- Username Input -->
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-semibold text-gray-700">Username</label>
+        <input matInput type="text" id="username" class="w-full p-2 border border-gray-300 rounded-md mt-1"
+          formControlName="username" placeholder="Enter your username" required />
+        <form-error [control]="form.get('username')" label="Username" />
+      </div>
+
+      <!-- Password Input -->
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-semibold text-gray-700">Password</label>
+        <input matInput type="password" id="password" class="w-full p-2 border border-gray-300 rounded-md mt-1"
+          formControlName="password" placeholder="Enter your password" required />
+        <form-error [control]="form.get('password')" label="Password" />
+      </div>
+
+      <!-- Submit Button -->
+      <div class="mb-6">
+        <button mat-button id="loginButton" class="px-5 py-2 text-white rounded-md transition w-full
+      bg-blue-700 hover:bg-blue-800
+      disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:bg-gray-400" (click)="login()"
+          [disabled]="isFormInValid()">
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -2,35 +2,49 @@ import { LoginInfoResponseDto } from '../../models/login/login-dto.model';
 
 const key = 'loginInfo';
 
+function isBrowser(): boolean {
+  return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+}
+
 export function getLoginInfo(): LoginInfoResponseDto | null {
-    const raw = localStorage.getItem(key);
-    try {
-        return raw ? JSON.parse(raw) : null;
-    } catch {
-        return null;
-    }
+  if (!isBrowser()) return null;
+
+  const raw = localStorage.getItem(key);
+  try {
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
 }
 
 export function isLoggedIn(): boolean {
+  if (!isBrowser()) return false;
 
-    console.log('isLoggedIn', getLoginInfo());
-    return !!getLoginInfo();
+  return !!getLoginInfo();
 }
 
 export function isAdmin(): boolean {
-    const info = getLoginInfo();
-    return info?.role === 'admin';
+  if (!isBrowser()) return false;
+
+  const info = getLoginInfo();
+  return info?.role === 'admin';
 }
 
 export function isHrAdmin(): boolean {
-    const info = getLoginInfo();
-    return info?.role === 'admin' && info?.department === 'Human Resources';
+  if (!isBrowser()) return false;
+
+  const info = getLoginInfo();
+  return info?.role === 'admin' && info?.department === 'Human Resources';
 }
 
 export function getDepartment(): string | null {
-    return getLoginInfo()?.department ?? null;
+  if (!isBrowser()) return null;
+
+  return getLoginInfo()?.department ?? null;
 }
 
 export function clearLoginInfo() {
-    localStorage.removeItem(key);
+  if (!isBrowser()) return;
+
+  localStorage.removeItem(key);
 }

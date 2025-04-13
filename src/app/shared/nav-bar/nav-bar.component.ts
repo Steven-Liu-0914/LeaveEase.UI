@@ -12,9 +12,11 @@ import { LoginInfoResponseDto } from '../../models/login/login-dto.model';
 })
 
 
-export class NavBarComponent {
+
+export class NavBarComponent implements OnInit {
+  loginInfo: string | null = null;
   loginStore = inject(LoginStore);
-  loginInfo = localStorage.getItem('loginInfo');
+
   _isLoggedIn = isLoggedIn();
   _isAdmin = isAdmin();
   _isHRAdmin = isHrAdmin();
@@ -24,7 +26,12 @@ export class NavBarComponent {
       const login = JSON.parse(this.loginInfo) as LoginInfoResponseDto;
       return login.fullName;
     }
- 
+
     return null;
   })
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      this.loginInfo = localStorage.getItem('loginInfo');
+    }
+  }
 } 

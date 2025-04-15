@@ -1,40 +1,40 @@
 <div class="p-4 w-4/5">
     <h2 class="text-2xl font-semibold text-gray-800 mb-4">Leave History</h2>
 
-    <div class="bg-white shadow rounded-lg p-6 w-full space-y-4">
+    <div class="!bg-white shadow rounded-lg p-6 w-full space-y-4">
         @if(!!leaveHistory()&&leaveHistory().length > 0) {
-        <table mat-table [dataSource]="leaveHistory()" class="min-w-full divide-y divide-gray-200">
+        <table mat-table [dataSource]="leaveHistory()" class="min-w-full divide-y !bg-white">
             <!-- Leave Type -->
             <ng-container matColumnDef="leaveType">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">Leave
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">Leave
                     Type</th>
                 <td mat-cell *matCellDef="let row" class="p-2">{{ row.leaveType }}</td>
             </ng-container>
 
             <!-- Start Date -->
             <ng-container matColumnDef="startDate">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">Start
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">Start
                     Date</th>
                 <td mat-cell *matCellDef="let row" class="p-2">{{ row.startDate }}</td>
             </ng-container>
 
             <!-- End Date -->
             <ng-container matColumnDef="endDate">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">End Date
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">End Date
                 </th>
                 <td mat-cell *matCellDef="let row" class="p-2">{{ row.endDate }}</td>
             </ng-container>
 
             <!-- Reason -->
             <ng-container matColumnDef="reason">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">Reason
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">Reason
                 </th>
                 <td mat-cell *matCellDef="let row" class="p-2">{{ row.reason }}</td>
             </ng-container>
 
             <!-- Status -->
             <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">Status
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">Status
                 </th>
                 <td mat-cell *matCellDef="let row" class="p-2">
                     @if (row.status === 'Approved') {
@@ -51,7 +51,7 @@
 
             <!-- Actions -->
             <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 bg-gray-50">Actions
+                <th mat-header-cell *matHeaderCellDef class="text-left p-2 !font-bold text-gray-700 ">Actions
                 </th>
                 <td mat-cell *matCellDef="let row" class="p-2">
 

@@ -19,6 +19,25 @@
     </div>
   </div>
 
+  <!-- Remaining Leave Details -->
+  <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-600 mt-4">
+    <p class="text-sm font-semibold text-gray-600 mb-1">Remaining Leave by Type</p>
+    @if (!!remainingDetails() && remainingDetails().length > 0) {
+    <ul class="text-gray-800 space-y-2 text-sm">
+      @for (item of remainingDetails(); track item) {
+      <li>
+        <span class="font-medium">{{ item.type }}:</span>
+        <span class= "text-green-800 px-2 py-1 rounded-md">
+          {{ item.remaining }} days
+        </span>
+      </li>
+      }
+    </ul>
+    } @else {
+    <p class="text-sm text-gray-500 italic">No leave quota found.</p>
+    }
+  </div>
+
   <!-- Upcoming Leave Info -->
   <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-700">
     <p class="text-sm font-semibold text-gray-600 mb-1">Upcoming Leave</p>
@@ -40,7 +59,7 @@
 
   </div>
 
-
+  @if(isAdmin){
   <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-600">
     <p class="text-sm font-semibold text-gray-600 mb-3">Leave(s) Required Your Action</p>
     @if (!!pendingApprovals() && pendingApprovals().length > 0) {
@@ -71,6 +90,6 @@
     <p class="text-sm text-gray-500 italic">No action-required leave found.</p>
     }
   </div>
-
+  }
 
 </div>

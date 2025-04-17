@@ -7,6 +7,7 @@ export interface DashboardDto {
   totalApplied: number;
   nextUpcomingLeave: LeaveApplicationDto[];
   pendingApproveLeave: PendingLeavesForReviewDto[];
+  remainingDetails: RemainingLeaveDetail[];
 }
 
 
@@ -21,4 +22,9 @@ export interface PendingLeavesForReviewDto {
   reason: string;
   status: string;      
   createdAt: string;
+}
+
+export interface RemainingLeaveDetail {
+  type: string;
+  remaining: number;
 }

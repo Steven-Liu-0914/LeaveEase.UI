@@ -8,7 +8,7 @@ export function showSuccessMessage(message: string, injector: Injector) {
         snackBar.open(message, '', {
             duration: 3000,
             verticalPosition: 'top',
-            panelClass: ['bg-green-600', 'text-white', 'text-center'],
+            panelClass: ['custom-snackbar-success'],
         });
     });
 

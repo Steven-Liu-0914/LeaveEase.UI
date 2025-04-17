@@ -14,16 +14,19 @@ export const DashboardStore = signalStore(
         const summary = computed(() => ({
             remainingLeave: dashboard().remainingLeave,
             upcomingLeave: dashboard().upcomingLeave,
-            totalApplied: dashboard().totalApplied
+            totalApplied: dashboard().totalApplied,
+          
         }));
         const nextUpcomingLeave = computed(() => dashboard().nextUpcomingLeave);
         const pendingApprovals = computed(() => dashboard().pendingApproveLeave);
+        const remainingDetails = computed(() => dashboard().remainingDetails);
 
         return {
             dashboard: computed(() => dashboard()),
             summary: computed(() => summary()),
             nextUpcomingLeave: computed(() => nextUpcomingLeave()),
-            pendingApprovals: computed(() => pendingApprovals())
+            pendingApprovals: computed(() => pendingApprovals()),
+            remainingDetails: computed(() => remainingDetails())
         }
     }),
     withMethods(() => {

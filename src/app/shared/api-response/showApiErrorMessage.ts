@@ -6,9 +6,9 @@ export function showApiErrorMessage(error: any, injector: Injector) {
     const snackBar = inject(MatSnackBar);
     if (error?.error?.message) {
       snackBar.open(error.error.message, '', {
-        duration: 4000,
+        duration: 3000,
         verticalPosition: 'top',
-        panelClass: ['bg-red-600', 'text-white', 'text-center'],
+        panelClass: ['custom-snackbar-error']
       });
     }
   });

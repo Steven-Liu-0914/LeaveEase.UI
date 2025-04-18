@@ -12,15 +12,31 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.general-font {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .custom-snackbar-error .mdc-snackbar__surface {
     background-color: #dc2626 !important;
     /* Tailwind's bg-red-600 */
     color: white !important;
     text-align: center;
+    
+}
+
+.custom-snackbar-error .mat-mdc-snack-bar-label 
+{
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
 }
 
 .custom-snackbar-success .mdc-snackbar__surface {
-    background-color: #16a34a !important; 
+    background-color: #16a34a !important;
     color: #fff !important;
     text-align: center;
-  }
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+.custom-snackbar-success .mat-mdc-snack-bar-label 
+{
+    font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}

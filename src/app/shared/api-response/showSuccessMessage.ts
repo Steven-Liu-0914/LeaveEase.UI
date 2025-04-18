@@ -6,7 +6,7 @@ export function showSuccessMessage(message: string, injector: Injector) {
     runInInjectionContext(injector, () => {
         const snackBar = inject(MatSnackBar);
         snackBar.open(message, '', {
-            duration: 3000,
+            duration: 5000,
             verticalPosition: 'top',
             panelClass: ['custom-snackbar-success'],
         });

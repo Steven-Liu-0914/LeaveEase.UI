@@ -6,7 +6,7 @@ export function showApiErrorMessage(error: any, injector: Injector) {
     const snackBar = inject(MatSnackBar);
     if (error?.error?.message) {
       snackBar.open(error.error.message, '', {
-        duration: 3000,
+        duration: 5000,
         verticalPosition: 'top',
         panelClass: ['custom-snackbar-error']
       });

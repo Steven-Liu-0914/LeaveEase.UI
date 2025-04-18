@@ -76,7 +76,7 @@ export class PublicHolidayComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const newId = this.store.addHolidayFromDialog({
+        const newId = this.store.addHolidayFromDialog(this.injector, {
           ...result,
           day: format(parseISO(result.date), 'EEEE')
         });

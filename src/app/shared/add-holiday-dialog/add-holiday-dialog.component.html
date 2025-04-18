@@ -1,6 +1,12 @@
 <div class="p-6">
     <h2 class="text-lg font-semibold text-gray-800 mb-4">Add New Holiday</h2>
-
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
+        ⚠️ Adding a new public holiday may affect existing leave applications:
+        <ul class="list-disc list-inside mt-1">
+          <li>Approved leaves overlapping the date will have 1 day refunded</li>
+          <li>Pending leaves including this date will be auto-cancelled</li>
+        </ul>
+      </div>
     <form [formGroup]="form" class="space-y-4">
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Holiday Name</label>

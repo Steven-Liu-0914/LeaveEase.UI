@@ -15,7 +15,7 @@ import { FormErrorComponent } from '../form-error/form-error.component';
 export class AddHolidayDialogComponent {
   dialogRef = inject(MatDialogRef<AddHolidayDialogComponent>);
   form = injectAddHolidayForm();
-
+ 
   get isFormInValid() {
     return this.form.invalid && (this.form.dirty || this.form.touched);
   }

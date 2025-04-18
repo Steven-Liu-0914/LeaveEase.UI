@@ -1,9 +1,8 @@
 import { signalStore, withState, withMethods, patchState, withComputed } from '@ngrx/signals';
-
-import { format, parseISO } from 'date-fns';
 import { PublicHolidayDto } from '../../models/public-holiday/public-holiday.model';
 import { injectAddPublicHolidayMutation, injectDeletePublicHolidayMutation, injectExportHolidayCommand, injectPublicHolidayQuery, injectUpdatePublicHolidayMutation } from '../../api/public-holiday/public-holiday.query';
-import { computed } from '@angular/core';
+import { computed, Injector } from '@angular/core';
+import { showApiErrorMessage } from '../../shared/api-response/showApiErrorMessage';
 
 let nextId = 100; // for demo add
 
@@ -34,7 +33,17 @@ export const PublicHolidayStore = signalStore(
             await updatePublicHolidayClient.mutateAsync(updated);
         };
 
-        const addHolidayFromDialog = async (holiday: PublicHolidayDto) => {
+        const addHolidayFromDialog = async (injector: Injector, holiday: PublicHolidayDto) => {
+            const exists = store.holiday().some(h => h.date === holiday.date);
+
+            if (exists) {
+                showApiErrorMessage(
+                    { error: { message: 'A public holiday on this date already exists.' } },
+                    injector
+                );
+                return;
+            }
+
             await addPublicHolidayClient.mutateAsync(holiday);
         };
 

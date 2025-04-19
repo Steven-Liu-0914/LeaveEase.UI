@@ -1,59 +1,110 @@
-# LeaveEaseUI
+# LeaveEase.UI (Frontend)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+This is the frontend of the **LeaveEase** HR leave management system, developed with Angular 17 and styled using Tailwind CSS. It supports three user roles — Normal Staff, Department Manager, and HR Admin — each with tailored functionalities.
 
-## Development server
+## 🚀 Option 1 – Run via Docker (Recommended)
 
-To start a local development server, run:
+### Prerequisites
+- Docker installed on your system
+- PowerShell (for Windows script execution)
+
+### Steps
+1. **Download** the Docker archive from: [https://drive.google.com/file/d/1x1jPuMxBbTs8C97wD15S8VTryqVuzgAy/view?usp=sharing](https://drive.google.com/file/d/1x1jPuMxBbTs8C97wD15S8VTryqVuzgAy/view?usp=sharing)
+   
+
+2. **Unzip** the archive (e.g., `LeaveEase.Docker.zip`)
+
+3. **Run** the provided `run.ps1` script (Windows only)
+
+4. **If using macOS/Linux**:  
+   Open a terminal and run:
+
+   ```bash
+   cd LeaveEase.Docker
+   docker load -i mysql.tar
+   docker load -i leaveease-backend.tar
+   docker load -i leaveease-ui.tar
+   docker-compose up -d
+   open http://localhost:4201
+   ```
+
+5. **Wait 1 minute** for all containers to initialize, then open your browser:  
+   [http://localhost:4201](http://localhost:4201)
+
+---
+
+## 🛠️ Option 2 – Local Development Setup
+
+### Prerequisites
+
+- **Node.js** (includes npm):  
+  👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
+
+- **Angular CLI** (install after Node):  
+  ```bash
+  npm install -g @angular/cli
+  ```
+
+---
+
+### Setup Steps
 
 ```bash
+cd LeaveEase.UI
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- The app will run on: [http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## ⚙️ Configuration Notes
 
-```bash
-ng generate component component-name
+The frontend communicates with the backend API via:
+
+```ts
+// File: src/appconfig.ts (Line 16)
+export const baseUrl = 'http://localhost:8080/api';
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+
+## 🐛 Known Angular 19 Build Warning
+
+During hot reload or rebuild, the following console error might appear:
 
 ```bash
-ng generate --help
+TypeError: egetOrCreateAngularServerApp is not a function
 ```
 
-## Building
+✅ This is a known Angular 19 SSR-related issue.  
+💡 **Solution**: Just refresh the browser. It does not affect functionality.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 🔐 Test User Accounts
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+If you've run the `initial_reset_database.sql` from the backend repo, use these:
 
-## Running unit tests
+| Name    | Role                    | Username | Password  |
+|---------|-------------------------|----------|-----------|
+| Amy     | Normal Staff (Marketing)| A001     | P@ssw0rd  |
+| Bob     | Department Manager      | B001     | P@ssw0rd  |
+| Cindy   | HR Admin                | C001     | P@ssw0rd  |
+| Daniel  | Normal Staff (Engineer) | D001     | P@ssw0rd  |
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+---
 
-```bash
-ng test
-```
+## 📌 Port Availability Reminder
 
-## Running end-to-end tests
+Before starting the frontend, ensure the following ports are **not used** by other apps:
 
-For end-to-end (e2e) testing, run:
+| Port | Usage                         | When                    |
+|------|-------------------------------|-------------------------|
+| 4200 | Frontend (Angular)           | Local Development       |
+| 4201 | Frontend (Docker)            | Docker Compose Setup    |
+| 8080 | Backend API (Spring Boot)    | Local & Docker          |
+| 3306 | MySQL Internal (Container)   | Docker Internal DB Port |
+| 3307 | MySQL Exposed Port (Host)    | Docker Host Access      |
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

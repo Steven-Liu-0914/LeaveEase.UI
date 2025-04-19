@@ -1,6 +1,6 @@
 # LeaveEase.UI (Frontend)
 
-This is the frontend of the **LeaveEase** HR leave management system, developed with Angular 17 and styled using Tailwind CSS. It supports three user roles — Normal Staff, Department Manager, and HR Admin — each with tailored functionalities.
+This is the frontend of the **LeaveEase** HR leave management system, developed with Angular 19 and styled using Tailwind CSS. It supports three user roles — Normal Staff, Department Manager, and HR Admin — each with tailored functionalities.
 
 ## 🚀 Option 1 – Run via Docker (Recommended)
 
